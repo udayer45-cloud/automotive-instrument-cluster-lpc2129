@@ -1,6 +1,6 @@
-# Automotive Instrument Cluster — CAN Bus Communication (LPC2148)
+# Automotive Instrument Cluster — CAN Bus Communication (LPC2129)
 
-> A two-node embedded system simulating an automotive instrument cluster using CAN 2.0B protocol on ARM7TDMI (LPC2148) microcontrollers. Designed and developed as part of embedded systems training at Vector India, Bengaluru.
+> A two-node embedded system simulating an automotive instrument cluster using CAN 2.0B protocol on ARM7TDMI (LPC2129) microcontrollers. Designed and developed as part of embedded systems training at Vector India, Bengaluru.
 
 ---
 
@@ -35,7 +35,7 @@ The design follows automotive communication patterns:
 ```
   ┌──────────────────────────────────┐         ┌──────────────────────────────────┐
   │           NODE A (TX)            │         │           NODE B (RX)            │
-  │         LPC2148 ARM7             │         │         LPC2148 ARM7             │
+  │         LPC2129 ARM7             │         │         LPC2129 ARM7             │
   │                                  │         │                                  │
   │  LM35 (Temp)   → ADC Ch1        │  CAN    │  CAN RX ISR  → Frame Parser     │
   │  Potentiometer → ADC Ch2        │ ──────► │  LCD Driver  → Speed / Temp      │
@@ -52,7 +52,7 @@ The design follows automotive communication patterns:
 
 | Component | Node A | Node B |
 |---|---|---|
-| MCU | LPC2148 (ARM7TDMI-S) | LPC2148 (ARM7TDMI-S) |
+| MCU | LPC2129 (ARM7TDMI-S) | LPC2129 (ARM7TDMI-S) |
 | CAN Transceiver | MCP2551 (CAN 2.0B) | MCP2551 (CAN 2.0B) |
 | Sensor | LM35 (Temp), Potentiometer (Speed) | — |
 | Input | 3x Tactile Switches (EINT0/1/2) | — |
@@ -120,7 +120,7 @@ automotive-instrument-cluster/
 │   ├── header.h                  # Struct definitions, function prototypes
 │   ├── main_nodeA.c              # Main loop: ADC sampling, CAN TX logic
 │   ├── adc_driver.c              # ADC init and channel read
-│   ├── can2_driver.c             # CAN2 init and TX (LPC2148 CAN2 peripheral)
+│   ├── can2_driver.c             # CAN2 init and TX (LPC2129 CAN2 peripheral)
 │   └── interrupt_handler.c       # EINT0/1/2 ISRs + Timer1 ISR (10ms tick)
 │
 ├── Node_B/
@@ -214,10 +214,10 @@ Five characters stored in CGRAM at init:
 
 ## Build & Flash
 
-**Environment:** Keil MDK (µVision) — ARM7 device pack for LPC2148
+**Environment:** Keil MDK (µVision) — ARM7 device pack for LPC2129
 
 1. Clone the repository
-2. Open Keil µVision → New Project → Select LPC2148
+2. Open Keil µVision → New Project → Select LPC2129
 3. Add source files from `Node_A/` or `Node_B/` as needed
 4. Set PLLCLK = 60 MHz (12 MHz crystal, M=5, P=2)
 5. Build → Flash via JTAG or UART ISP (Flash Magic)
@@ -246,7 +246,7 @@ Five characters stored in CGRAM at init:
 |---|---|
 | IDE | Keil MDK µVision |
 | Compiler | ARM RealView C Compiler (RVCT) |
-| MCU | NXP LPC2148 (ARM7TDMI-S, 60 MHz) |
+| MCU | NXP LPC2129 (ARM7TDMI-S, 60 MHz) |
 | CAN Transceiver | MCP2551 |
 | Programmer | Flash Magic (UART ISP) / JTAG |
 | Protocol | CAN 2.0B, 125 Kbps |
@@ -258,7 +258,7 @@ Five characters stored in CGRAM at init:
 
 **Uday** — EEE Graduate (JNTUA College of Engineering, 2025)  
 Automotive Embedded Systems Trainee @ Vector India, Bengaluru  
-[LinkedIn](#) · [GitHub](#)
+[LinkedIn](https://www.linkedin.com/in/udaykiran1807) · [GitHub](https://github.com/udayer45-cloud)
 
 ---
 
