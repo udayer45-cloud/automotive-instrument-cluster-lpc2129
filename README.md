@@ -22,7 +22,7 @@
 
 ## Overview
 
-This project implements a real-time automotive instrument cluster using CAN bus communication between two LPC2148 microcontroller nodes. Node A acts as a sensor/input ECU that reads vehicle data and transmits CAN frames. Node B acts as a display ECU that receives frames and drives an LCD + LED indicators.
+This project implements a real-time automotive instrument cluster using CAN bus communication between two LPC2129 microcontroller nodes. Node A acts as a sensor/input ECU that reads vehicle data and transmits CAN frames. Node B acts as a display ECU that receives frames and drives an LCD + LED indicators.
 
 The design follows automotive communication patterns:
 - **Event-triggered frames** for switch state changes (headlight, indicators)
